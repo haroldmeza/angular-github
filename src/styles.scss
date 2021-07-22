@@ -1,1 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
+
+
+:root{
+    --grey-lighter : #f8f8f8;
+}
+
+
+.grey-lighter {
+    background-color: var(--grey-lighter);
+}
+
+.hover-pointer{
+    cursor: pointer;
+}

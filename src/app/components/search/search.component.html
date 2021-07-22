@@ -1,0 +1,26 @@
+<app-loading *ngIf="loading; else elseBlock "></app-loading>
+<ng-template #elseBlock>
+  <form action="" class="grey-lighter p-4" [formGroup]="validateForm" (ngSubmit)="submitForm()">
+      <div class="field">
+          <label class="label">Nombre</label>
+          <div class="control">
+            <input 
+              class="input" 
+              type="text" 
+              placeholder="Usuario a buscar"
+              formControlName="usuario" 
+            >
+          </div>
+      </div>
+      <div class="field is-grouped">
+          <div class="control">
+            <button 
+              class="button is-primary"
+              [disabled]="this.validateForm.invalid || !this.validateForm.touched"
+            >Bucar</button>
+          </div>
+      </div>
+  </form>
+  <app-user *ngFor="let user of (this.users | async)" [image]="user.avatar_url" [login]="user.login" [id]="user.id" class="hover-pointer" (click)="onClickUser(user)" ></app-user>
+</ng-template>
+<app-alert *ngIf="error" [message]="error"></app-alert>

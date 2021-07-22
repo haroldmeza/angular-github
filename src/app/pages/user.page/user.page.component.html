@@ -1,0 +1,13 @@
+<div class="container py-5">
+    <div class="columns">
+        <div class="column is-full">
+            <app-loading *ngIf="loading; else elseBlock "></app-loading>
+            <ng-template #elseBlock>
+                <div class="is-flex is-flex-direction-column" *ngIf="!error">
+                    <app-user [image]="(this.user | async).avatar_url" [login]="(this.user | async).login" [id]="(this.user | async).id"></app-user>
+                </div>
+                <app-alert *ngIf="error" [message]="error"></app-alert>
+            </ng-template>
+        </div>
+    </div>
+</div>
